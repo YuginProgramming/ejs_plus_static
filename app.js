@@ -1,10 +1,6 @@
 const express = require('express');
 const server = express();
 
-server.get('/', (req,res) => {
-    res.send('Hello')
-});
-
 server.set('view engine', 'ejs');
 server.set('views', './views');
 
@@ -31,6 +27,10 @@ server.get('/phone/:id', (req, res) => {
 
     const vars = { title: phone.Model, content: phone.Memory};
     res.render('dz', vars);
+}); 
+server.get('/', (req, res) => {
+    const { id } = req.params;
+    res.render('home');
 }); 
 
 server.listen(3000);
